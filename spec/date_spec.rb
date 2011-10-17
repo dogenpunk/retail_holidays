@@ -79,7 +79,60 @@ describe DateTime do
     its(:holiday?) { should be_true }
 
     it "should return false on non-retail holidays" do
-      DateTime.civil(2011,10,10).holiday?.should be_false
+      DateTime.civil(2011,10,10).should_not be_holiday
+    end
+
+    it "should return true on Thanksgiving" do
+      DateTime.civil(2011, 11, 24).should be_holiday
+    end
+
+    it "should return true on Black Friday" do
+      DateTime.civil(2011, 11, 25).should be_holiday
+    end
+
+    it "should return true on Labor Day" do
+      DateTime.civil(2012, 9, 3).should be_holiday
+    end
+
+    it "should return true on Independenc Day" do
+      DateTime.civil(2012, 7, 4).should be_holiday
+    end
+
+    it "should return true on Memorial Day" do
+      DateTime.civil(2012, 5, 28).should be_holiday
+    end
+  end
+end
+
+describe Time do
+  subject { Time.new(2008,1,1,15,35,0,6) }
+
+  context "#holiday?" do
+    it { should respond_to(:holiday?) }
+    its(:holiday?) { should be_true }
+
+    it "should return false on non-retail holidays" do
+      Time.new(2011,10,10).should_not be_holiday
+    end
+
+    it "should return true on Thanksgiving" do
+      Time.new(2011, 11, 24, 1, 35).should be_holiday
+    end
+
+    it "should return true on Black Friday" do
+      Time.new(2011, 11, 25, 1, 35).should be_holiday
+    end
+
+    it "should return true on Labor Day" do
+      Time.new(2012, 9, 3, 1, 35).should be_holiday
+    end
+
+    it "should return true on Independenc Day" do
+      Time.new(2012, 7, 4, 1, 35).should be_holiday
+    end
+
+    it "should return true on Memorial Day" do
+      Time.new(2012, 5, 28, 1, 35).should be_holiday
     end
   end
 end

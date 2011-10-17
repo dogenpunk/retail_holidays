@@ -1,10 +1,10 @@
 require 'date'
-require 'retail_holidays/version'
+require_relative './retail_holidays/version'
 
 module RetailHolidays
 
   def holiday?
-    RetailHolidays.on(self)
+    RetailHolidays.on(self).nil? ? false : true
   end
 
   def self.on(date)
@@ -73,7 +73,7 @@ module RetailHolidays
           (target_day + (7 - weekday)) - 7
       observed = Date.civil(target_year, target_month, earliest_date + offset)
       observed.day < 24 ? observed += 7 : observed
-      observed == date
+      observed == date.to_date
     end
   end
 
@@ -121,7 +121,7 @@ module RetailHolidays
           target_day + (7 - weekday) :
           (target_day + (7 - weekday)) - 7
       observed = Date.civil(target_year, target_month, earliest_date + offset)
-      observed == date
+      observed == date.to_date
     end
   end
 
@@ -146,7 +146,7 @@ module RetailHolidays
           target_day + (7 - weekday) :
           (target_day + (7 - weekday)) - 7
       observed = Date.civil(target_year, target_month, earliest_date + offset)
-      observed == date
+      observed == date.to_date
     end
   end
 
@@ -171,7 +171,7 @@ module RetailHolidays
           target_day + (7 - weekday) :
           (target_day + (7 - weekday)) - 7
       observed = Date.civil(target_year, target_month, earliest_date + offset)
-      observed == date
+      observed == date.to_date
     end
   end
 
@@ -225,5 +225,9 @@ module RetailHolidays
 end
 
 class Date
+  include RetailHolidays
+end
+
+class Time
   include RetailHolidays
 end
