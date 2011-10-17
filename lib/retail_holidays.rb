@@ -1,7 +1,7 @@
 require 'date'
+require 'retail_holidays/version'
 
 module RetailHolidays
-  VERSION = "0.0.1"
 
   def holiday?
     RetailHolidays.on(self)
@@ -36,6 +36,7 @@ module RetailHolidays
     def observed_on?(date)
       month = date.month
       mday  = date.mday
+      # TODO: move this to a generalized method
       if month == 1 && mday == 1
         @observed = false
         return true
@@ -59,6 +60,7 @@ module RetailHolidays
     end
 
     def observed_on?(date)
+      # TODO: move this to a generalized method
       target_day = 1
       target_month = 5
       target_year = date.year
