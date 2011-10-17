@@ -16,8 +16,11 @@ Testing
 -------
 
 I use:
+
     $ autotest
+
 Otherwise:
+
     $ rspec spec
 
 Contributing
