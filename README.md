@@ -19,6 +19,14 @@ I use:
 
     $ autotest
 
+There is the default rake task:
+
+    $ rake
+
+Or the more explicit:
+
+    $ rake spec
+
 Otherwise:
 
     $ rspec spec
