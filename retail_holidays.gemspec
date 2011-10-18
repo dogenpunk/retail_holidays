@@ -13,10 +13,17 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "retail_holidays"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.test_files    = %w(spec/date_spec.rb
+                       spec/retail_holidays_spec.rb
+                       spec/spec_helper.rb)
   s.require_paths = ["lib"]
+  s.files         = %w(Gemfile
+                       README.md
+                       Rakefile
+                       TODO.md
+                       lib/retail_holidays.rb
+                       lib/retail_holidays/version.rb
+                       retail_holidays.gemspec)
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
